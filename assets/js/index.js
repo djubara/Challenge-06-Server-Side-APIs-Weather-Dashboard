@@ -60,6 +60,7 @@ function search(query) {
     window.location.reload()
 }
 
+// Creating search entry button
 searchBtn.on('click', () => search(citySearchInputEl.val()))
 
 function renderSearchHistory() {
@@ -69,12 +70,15 @@ function renderSearchHistory() {
     }
 }
 
+// add each day to the forecast card
 function renderForecastCards(forecastDays) {
     let prevDay = dayjs.unix(forecastDays[0].dt)
     let dayMax = forecastDays[0].main.temp
     let dayMin = forecastDays[0].main.temp
 
     console.log(forecastDays)
+
+    // loop through each day
 
     for (let i = 0; i < forecastDays.length; i++) {
         const currentForecastDay = forecastDays[i]
@@ -103,6 +107,8 @@ function renderForecastCards(forecastDays) {
         prevDay = dayjs.unix(currentForecastDay.dt)
     }
 }
+
+// get today's forecast card
 
 function renderTodaysWeather(forecast) {
     todaysDateEl.text(dayjs().format("ddd M/D/YY"))
